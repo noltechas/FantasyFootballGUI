@@ -29,6 +29,7 @@ public class PlayoffsGUI extends Application {
     private static List<Conference> conferences;
     private static ArrayList<Team> teams;
     private static final int IMAGE_SIZE = 136;
+    private static final boolean SHOW_LABELS = true;
 
     public static void setConferences(List<Conference> conferences) {
         PlayoffsGUI.conferences = conferences;
@@ -133,8 +134,76 @@ public class PlayoffsGUI extends Application {
             }
         });
 
-        Font font = Font.loadFont(getClass().getResourceAsStream("/GillSans.ttc"), 60);
+        // Round titles
+        if(SHOW_LABELS) {
+            Image wildcardImage = new Image("file:./src/main/resources/Wildcard.png");
+            ImageView wildcardImageView = new ImageView(wildcardImage);
+            ImageView wildcardImageViewFlip = new ImageView(wildcardImage);
+            wildcardImageView.setFitHeight(1000);
+            wildcardImageView.setFitWidth(1000);
+            wildcardImageViewFlip.setFitHeight(1000);
+            wildcardImageViewFlip.setFitWidth(1000);
+            wildcardImageView.setLayoutX(1270);
+            wildcardImageView.setLayoutY(550);
+            wildcardImageViewFlip.setLayoutX(13330);
+            wildcardImageViewFlip.setLayoutY(550);
+            group.getChildren().add(wildcardImageView);
+            group.getChildren().add(wildcardImageViewFlip);
 
+            Image sweet16Image = new Image("file:./src/main/resources/Sweet16.png");
+            ImageView sweet16View = new ImageView(sweet16Image);
+            ImageView sweet16ViewFlip = new ImageView(sweet16Image);
+            int adjustment = 1537;
+            sweet16View.setFitHeight(1000);
+            sweet16View.setFitWidth(1000);
+            sweet16ViewFlip.setFitHeight(1000);
+            sweet16ViewFlip.setFitWidth(1000);
+            sweet16View.setLayoutX(1270 + adjustment);
+            sweet16View.setLayoutY(550);
+            sweet16ViewFlip.setLayoutX(13330 - adjustment);
+            sweet16ViewFlip.setLayoutY(550);
+            group.getChildren().add(sweet16View);
+            group.getChildren().add(sweet16ViewFlip);
+
+            Image quarterImage = new Image("file:./src/main/resources/Quarter.png");
+            ImageView quarterView = new ImageView(quarterImage);
+            ImageView quarterViewFlip = new ImageView(quarterImage);
+            int Yadjustment = 450;
+            quarterView.setFitHeight(1000);
+            quarterView.setFitWidth(1000);
+            quarterViewFlip.setFitHeight(1000);
+            quarterViewFlip.setFitWidth(1000);
+            quarterView.setLayoutX(1270 + adjustment * 2);
+            quarterView.setLayoutY(550 + Yadjustment);
+            quarterViewFlip.setLayoutX(13330 - adjustment * 2);
+            quarterViewFlip.setLayoutY(550 + Yadjustment);
+            group.getChildren().add(quarterView);
+            group.getChildren().add(quarterViewFlip);
+
+            Image semiImage = new Image("file:./src/main/resources/Semi.png");
+            ImageView semiView = new ImageView(semiImage);
+            ImageView semiViewFlip = new ImageView(semiImage);
+            semiView.setFitHeight(1000);
+            semiView.setFitWidth(1000);
+            semiViewFlip.setFitHeight(1000);
+            semiViewFlip.setFitWidth(1000);
+            semiView.setLayoutX(1270 + adjustment * 3);
+            semiView.setLayoutY(550 + Yadjustment * 3);
+            semiViewFlip.setLayoutX(13330 - adjustment * 3);
+            semiViewFlip.setLayoutY(550 + Yadjustment * 3);
+            group.getChildren().add(semiView);
+            group.getChildren().add(semiViewFlip);
+
+            Image champImage = new Image("file:./src/main/resources/Champ.png");
+            ImageView champView = new ImageView(champImage);
+            champView.setFitHeight(1200);
+            champView.setFitWidth(1200);
+            champView.setLayoutX(1270 + adjustment * 4 - 200);
+            champView.setLayoutY(550 + Yadjustment * 3 - 200);
+            group.getChildren().add(champView);
+        }
+
+        Font font = Font.loadFont(getClass().getResourceAsStream("/GillSans.ttc"), 60);
         for (int i = 0; i < 24; i++) {
             Team team = teams.get(i);
 
