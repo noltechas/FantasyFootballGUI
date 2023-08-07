@@ -197,8 +197,8 @@ public class PlayoffsGUI extends Application {
             Image champImage = new Image("file:./src/main/resources/Champ.png");
             ImageView champView = new ImageView(champImage);
             champView.setFitHeight(1200);
-            champView.setFitWidth(1200);
-            champView.setLayoutX(1270 + adjustment * 4 - 200);
+            champView.setFitWidth(1400);
+            champView.setLayoutX(1270 + adjustment * 4 - 300);
             champView.setLayoutY(550 + Yadjustment * 3 - 200);
             group.getChildren().add(champView);
         }
@@ -435,7 +435,7 @@ public class PlayoffsGUI extends Application {
         root.setStyle("-fx-background-color: #313B4A"); // Set the background color on the root
         root.getChildren().add(pane);
 
-        Scene scene = new Scene(root, 1600, 1600);
+        Scene scene = new Scene(root, 1600, 800);
         primaryStage.setScene(scene);
         primaryStage.show();
 
