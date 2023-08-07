@@ -197,8 +197,8 @@ public class PlayoffsGUI extends Application {
             Image champImage = new Image("file:./src/main/resources/Champ.png");
             ImageView champView = new ImageView(champImage);
             champView.setFitHeight(1200);
-            champView.setFitWidth(1400);
-            champView.setLayoutX(1270 + adjustment * 4 - 300);
+            champView.setFitWidth(1800);
+            champView.setLayoutX(1270 + adjustment * 4 - 500);
             champView.setLayoutY(550 + Yadjustment * 3 - 200);
             group.getChildren().add(champView);
         }
