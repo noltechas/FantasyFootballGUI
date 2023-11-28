@@ -76,7 +76,8 @@ public class Main {
                 }
 
                 String username = user.getString("display_name");
-                String teamName = username; // Use username as a fallback if team name is not available
+                String teamName = username;
+                /*
                 if (!user.isNull("metadata")) {
                     JSONObject metadata = user.getJSONObject("metadata");
                     if (!metadata.isNull("team_name")) {
@@ -84,26 +85,17 @@ public class Main {
                     }
                 }
 
+                 */
+
                 JSONObject settings = roster.getJSONObject("settings");
                 int wins = settings.getInt("wins");
                 int losses = settings.getInt("losses");
 
-                // Points per game is not directly available in the data, so we'll use a placeholder value
-                double pointsPerGame = 0.0;
+                double pointsPerGame = (settings.getInt("fpts") + (settings.getInt("fpts_decimal") * 0.01)) / ((wins + losses)/2);
 
                 String avatarUrl = "./src/main/resources/teams/" + username + "_avatar.png";
                 String leagueAvatarUrl = "./src/main/resources/teams/" + username + "_leagueAvatar.png";
                 String divisionAvatarUrl = "./src/main/resources/teams/" + username + "_divisionAvatar.png";
-
-                // Simulate end of season
-                float winPercentage = (float)0.15 + random.nextFloat() * ((float)0.85 - (float)0.15);
-                wins = 0;
-                for(int j = 0; j < 24; j++){
-                    if(winPercentage > random.nextFloat())
-                        wins++;
-                }
-                losses = 24 - wins; // Each team plays 24 games
-                pointsPerGame = max(80,winPercentage*120) + random.nextGaussian() * 4.408873111054; // Average of 100 with a standard deviation of 10
 
                 String division;
                 division = String.valueOf(settings.getInt("division"));
