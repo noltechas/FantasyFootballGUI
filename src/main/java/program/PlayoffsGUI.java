@@ -53,87 +53,54 @@ public class PlayoffsGUI extends Application {
     }
 
     public static void arrangeTeams(){
-        // Sort all the teams in the conferences
-        for (Conference conference : conferences) {
-            conference.getTeams().sort((t1, t2) -> {
-                if (t1.wins != t2.wins) {
-                    return t2.wins - t1.wins; // Sort by wins in descending order
-                } else if (t1.pointsPerGame != t2.pointsPerGame) {
-                    return Double.compare(t2.pointsPerGame, t1.pointsPerGame); // Sort by points per game in descending order
-                } else {
-                    String name1 = t1.teamName.equals(t1.username) ? t1.username : t1.username + " (" + t1.teamName + ")";
-                    String name2 = t2.teamName.equals(t2.username) ? t2.username : t2.username + " (" + t2.teamName + ")";
-                    return name1.compareToIgnoreCase(name2); // Sort by name in ascending order, ignoring case
-                }
-            });
-        }
+        teams.add(getTeamByUsername("Figgzzz"));
+        teams.add(getTeamByUsername("GogiPrufu"));
+        teams.add(getTeamByUsername("tosh612"));
+        teams.add(getTeamByUsername("JBohnenkamp84"));
+        teams.add(getTeamByUsername("BraydonMck"));
+        teams.add(getTeamByUsername("Chargersxx21"));
+        teams.add(getTeamByUsername("blazer86"));
+        teams.add(getTeamByUsername("MrGatchoAss"));
+        teams.add(getTeamByUsername("safety120"));
+        teams.add(getTeamByUsername("KyleJacobTrussell"));
+        teams.add(getTeamByUsername("BiggNas"));
+        teams.add(getTeamByUsername("Noahcg8"));
+        teams.add(getTeamByUsername("JaarnushFantasy"));
+        teams.add(getTeamByUsername("nhallowell88"));
+        teams.add(getTeamByUsername("Skip_Skunky"));
+        teams.add(getTeamByUsername("DudeFootball"));
+        teams.add(getTeamByUsername("00sheaD"));
+        teams.add(getTeamByUsername("dbsmith24"));
+        teams.add(getTeamByUsername("BleedGold"));
+        teams.add(getTeamByUsername("bigshot626"));
+        teams.add(getTeamByUsername("ctalpha"));
+        teams.add(getTeamByUsername("isaiahm306"));
+        teams.add(getTeamByUsername("polishsausage54"));
+        teams.add(getTeamByUsername("dlittle2300"));
 
-        ArrayList<Team> conferenceWinners = new ArrayList<>();
-        // Add the conference winners to the winners list
+        teams.get(8).setScoreRoundOne(94.22 + teams.get(8).getPointsPerGame()/10); // FINAL
+        teams.get(9).setScoreRoundOne(98.14 + teams.get(9).getPointsPerGame()/10); // FINAL
+        teams.get(10).setScoreRoundOne(127.32 + teams.get(10).getPointsPerGame()/10); // FINAL
+        teams.get(11).setScoreRoundOne(120.1 + teams.get(11).getPointsPerGame()/10); // FINAL
+        teams.get(12).setScoreRoundOne(99.38 + teams.get(12).getPointsPerGame()/10); // FINAL
+        teams.get(13).setScoreRoundOne(133.86 + teams.get(13).getPointsPerGame()/10); // FINAL
+        teams.get(14).setScoreRoundOne(127.98 + teams.get(14).getPointsPerGame()/10); // FINAL
+        teams.get(15).setScoreRoundOne(99.72 + teams.get(15).getPointsPerGame()/10); // FINAL
+        teams.get(16).setScoreRoundOne(111.9); // FINAL
+        teams.get(17).setScoreRoundOne(81.48); // FINAL
+        teams.get(18).setScoreRoundOne(125.66); // FINAL
+        teams.get(19).setScoreRoundOne(107.28); // FINAL
+        teams.get(20).setScoreRoundOne(106.18); // FINAL
+        teams.get(21).setScoreRoundOne(75.2); // FINAL
+        teams.get(22).setScoreRoundOne(78.4); // FINAL
+        teams.get(23).setScoreRoundOne(82.78); // FINAL
 
-        conferenceWinners.add(getTeamByUsername("GogiPrufu"));
-        conferenceWinners.add(getTeamByUsername("blazer86"));
-        conferenceWinners.add(getTeamByUsername("JBohnenkamp84"));
-        conferenceWinners.add(getTeamByUsername("MrGatchoAss"));
-        conferenceWinners.add(getTeamByUsername("Figgzzz"));
-        conferenceWinners.add(getTeamByUsername("BraydonMck")); // NOT CERTAIN
-        conferenceWinners.add(getTeamByUsername("Chargersxx21"));
-        conferenceWinners.add(getTeamByUsername("tosh612"));
-
-        conferenceWinners.sort((t1, t2) -> {
-            if (t1.wins != t2.wins) {
-                return t2.wins - t1.wins; // Sort by wins in descending order
-            } else if (t1.pointsPerGame != t2.pointsPerGame) {
-                return Double.compare(t2.pointsPerGame, t1.pointsPerGame); // Sort by points per game in descending order
-            } else {
-                String name1 = t1.teamName.equals(t1.username) ? t1.username : t1.username + " (" + t1.teamName + ")";
-                String name2 = t2.teamName.equals(t2.username) ? t2.username : t2.username + " (" + t2.teamName + ")";
-                return name1.compareToIgnoreCase(name2); // Sort by name in ascending order, ignoring case
-            }
-        });
-        teams.addAll(conferenceWinners);
-
-        // Get the best PPG wildcards
-        ArrayList<Team> wildcards = new ArrayList<>();
-        for (Conference conference : conferences) {
-            wildcards.addAll(conference.getTeams());
-        }
-        wildcards.sort((t1, t2) -> {
-            if (t1.pointsPerGame != t2.pointsPerGame) {
-                return Double.compare(t2.pointsPerGame, t1.pointsPerGame);
-            } else if (t1.wins != t2.wins) {
-                return t2.wins - t1.wins; // Sort by wins in descending order
-            } else {
-                String name1 = t1.teamName.equals(t1.username) ? t1.username : t1.username + " (" + t1.teamName + ")";
-                String name2 = t2.teamName.equals(t2.username) ? t2.username : t2.username + " (" + t2.teamName + ")";
-                return name1.compareToIgnoreCase(name2); // Sort by name in ascending order, ignoring case
-            }
-        });
-        while(teams.size() < 16){
-            if(!teams.contains(wildcards.get(0)))
-                teams.add(wildcards.get(0));
-            wildcards.remove(0);
-        }
-
-        wildcards.sort((t1, t2) -> {
-            if (t1.wins != t2.wins) {
-                return t2.wins - t1.wins; // Sort by wins in descending order
-            } else if (t1.pointsPerGame != t2.pointsPerGame) {
-                return Double.compare(t2.pointsPerGame, t1.pointsPerGame); // Sort by points per game in descending order
-            } else {
-                String name1 = t1.teamName.equals(t1.username) ? t1.username : t1.username + " (" + t1.teamName + ")";
-                String name2 = t2.teamName.equals(t2.username) ? t2.username : t2.username + " (" + t2.teamName + ")";
-                return name1.compareToIgnoreCase(name2); // Sort by name in ascending order, ignoring case
-            }
-        });
-        while(teams.size() < 24){
-            if(!teams.contains(wildcards.get(0)))
-                teams.add(wildcards.get(0));
-            wildcards.remove(0);
+        for(int i = 0; i < teams.size(); i++){
+            teams.get(i).setSeed(i+1);
         }
 
         for(int i = 0; i < 24; i++){
-            System.out.println(teams.get(i).getTeamName() + ": " + teams.get(i).getPointsPerGame() + ", " + teams.get(i).getWins());
+            System.out.println(teams.get(i).getSeed() + ". " + teams.get(i).getTeamName() + ": " + teams.get(i).getPointsPerGame() + ", " + teams.get(i).getWins());
         }
     }
 
@@ -211,6 +178,66 @@ public class PlayoffsGUI extends Application {
                 displayNextTeam(group);
             }
         });
+
+        Objects.requireNonNull(getTeamByUsername("Figgzzz")).setScoreRoundTwo(129.5);
+        Objects.requireNonNull(getTeamByUsername("00sheaD")).setScoreRoundTwo(105.9);
+
+        Objects.requireNonNull(getTeamByUsername("MrGatchoAss")).setScoreRoundTwo(100.78);
+        Objects.requireNonNull(getTeamByUsername("safety120")).setScoreRoundTwo(74.38);
+
+        Objects.requireNonNull(getTeamByUsername("JBohnenkamp84")).setScoreRoundTwo(101.56);
+        Objects.requireNonNull(getTeamByUsername("JaarnushFantasy")).setScoreRoundTwo(69.8);
+
+        Objects.requireNonNull(getTeamByUsername("BraydonMck")).setScoreRoundTwo(81.08);
+        Objects.requireNonNull(getTeamByUsername("Noahcg8")).setScoreRoundTwo(88.8);
+
+        Objects.requireNonNull(getTeamByUsername("GogiPrufu")).setScoreRoundTwo(85.84);
+        Objects.requireNonNull(getTeamByUsername("Skip_Skunky")).setScoreRoundTwo(127.1);
+
+        Objects.requireNonNull(getTeamByUsername("blazer86")).setScoreRoundTwo(101.1);
+        Objects.requireNonNull(getTeamByUsername("KyleJacobTrussell")).setScoreRoundTwo(110.04);
+
+        Objects.requireNonNull(getTeamByUsername("tosh612")).setScoreRoundTwo(100.72);
+        Objects.requireNonNull(getTeamByUsername("nhallowell88")).setScoreRoundTwo(83.92);
+
+        Objects.requireNonNull(getTeamByUsername("Chargersxx21")).setScoreRoundTwo(85.64);
+        Objects.requireNonNull(getTeamByUsername("BiggNas")).setScoreRoundTwo(58.68);
+
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("00sheaD")), 0);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("safety120")), 1);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("JaarnushFantasy")), 2);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("Noahcg8")), 3);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("Skip_Skunky")), 4);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("KyleJacobTrussell")), 5);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("nhallowell88")), 6);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("BiggNas")), 7);
+
+        Objects.requireNonNull(getTeamByUsername("Figgzzz")).setScoreRoundThree(119.06);
+        Objects.requireNonNull(getTeamByUsername("MrGatchoAss")).setScoreRoundThree(97.92);
+
+        Objects.requireNonNull(getTeamByUsername("JBohnenkamp84")).setScoreRoundThree(101.42);
+        Objects.requireNonNull(getTeamByUsername("BraydonMck")).setScoreRoundThree(118.12);
+
+        Objects.requireNonNull(getTeamByUsername("Skip_Skunky")).setScoreRoundThree(143.54);
+        Objects.requireNonNull(getTeamByUsername("blazer86")).setScoreRoundThree(81.36);
+
+        Objects.requireNonNull(getTeamByUsername("tosh612")).setScoreRoundThree(118.92);
+        Objects.requireNonNull(getTeamByUsername("Chargersxx21")).setScoreRoundThree(134.02);
+
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("Figgzzz")), 8);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("MrGatchoAss")), 9);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("JBohnenkamp84")), 10);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("BraydonMck")), 11);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("Skip_Skunky")), 12);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("blazer86")), 13);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("tosh612")), 14);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("Chargersxx21")), 15);
+
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("Figgzzz")), 16);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("BraydonMck")), 17);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("Skip_Skunky")), 18);
+        displayAdvancedTeam(group, Objects.requireNonNull(getTeamByUsername("Chargersxx21")), 19);
+
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -249,13 +276,36 @@ public class PlayoffsGUI extends Application {
             teamNameText.setFill(Color.WHITE);
             teamNameText.setFont(font);
 
-            Text ppgText;
-            if(teamIndex < 16)
-                ppgText = new Text(" +" + String.format("%.1f", team.getPointsPerGame()/10));
-            else
-                ppgText = new Text();
+            Text ppgText = new Text();
+            if(teamIndex >= 16) {
+                ppgText = new Text(String.format("%.2f", team.getScoreRoundOne()));
+                ppgText.setStyle("-fx-fill: #ffdf0f;");
+            }
+            else if (teamIndex >= 8) {
+                ppgText = new Text(String.format("%.2f", team.getScoreRoundOne() + team.getPointsPerGame()/10));
+                ppgText.setStyle("-fx-fill: #ffdf0f;");
+            }
+            else{
+                ppgText = new Text(String.format("%.2f", team.getScoreRoundTwo() + team.getPointsPerGame()/10));
+                ppgText.setStyle("-fx-fill: #ffdf0f;");
+            }
             ppgText.setFont(Font.font("Arial Black", 50));
-            ppgText.setStyle("-fx-fill: #333333; -fx-stroke: #ffdf0f; -fx-stroke-width: 2");
+
+            /*
+            if(team.scoreRoundTwo > 0 && team.getSeed() <= 8) {
+                ppgText = new Text(String.format("%.2f", team.getScoreRoundTwo() + team.getPointsPerGame()/10));
+            }
+            else if(team.scoreRoundTwo > 0){
+                ppgText = new Text(String.format("%.2f", team.getScoreRoundTwo()));
+            }
+            else {
+                ppgText = new Text("");
+            }
+            ppgText.setStyle("-fx-fill: #ffdf0f;");
+            ppgText.setFont(Font.font("Arial Black", 50));
+
+             */
+
 
             TextFlow textFlow;
             Label seedLabel;
@@ -414,6 +464,205 @@ public class PlayoffsGUI extends Application {
             group.getChildren().add(label);
         }
         clickCount++;
+    }
+
+    private void displayAdvancedTeam(Group group, Team team, int slot){
+        // The following is your existing team display code, adapted to use clickCount
+        Image avatarImage = new Image("file:" + team.avatarUrl);
+        ImageView avatarImageView = new ImageView(avatarImage);
+        avatarImageView.setFitHeight(IMAGE_SIZE); // Adjust the size as needed
+        avatarImageView.setFitWidth(IMAGE_SIZE); // Adjust the size as needed
+
+        Image leagueImage = new Image("file:" + team.leagueAvatarUrl);
+        ImageView leagueImageView = new ImageView(leagueImage);
+        leagueImageView.setFitHeight(IMAGE_SIZE); // Adjust the size as needed
+        leagueImageView.setFitWidth(IMAGE_SIZE); // Adjust the size as needed
+
+        Image divisionImage = new Image("file:" + team.divisionAvatarUrl);
+        ImageView divisionImageView = new ImageView(divisionImage);
+        divisionImageView.setFitHeight(IMAGE_SIZE); // Adjust the size as needed
+        divisionImageView.setFitWidth(IMAGE_SIZE); // Adjust the size as needed
+
+        Font font = Font.loadFont(getClass().getResourceAsStream("/GillSans.ttc"), 60);
+        Text teamNameText = new Text(" " + team.getTeamName() + " (" + team.getWins() + "-" + team.getLosses() + ") ");
+        teamNameText.setFill(Color.WHITE);
+        teamNameText.setFont(font);
+
+        Text ppgText = new Text();
+        if(slot < 8) {
+            if (team.scoreRoundTwo > 0) {
+                ppgText = new Text(String.format("%.2f", team.getScoreRoundTwo()));
+                ppgText.setStyle("-fx-fill: #ffdf0f;");
+            } else {
+                ppgText = new Text("");
+                ppgText.setStyle("-fx-fill: #ffdf0f;");
+            }
+        }
+        else if(slot < 16) {
+            if (team.getSeed() == 1 || team.getSeed() == 4 || team.getSeed() == 7 || team.getSeed() == 3){
+                ppgText = new Text(String.format("%.2f", team.getScoreRoundThree() + team.getPointsPerGame()/10));
+                ppgText.setStyle("-fx-fill: #ffdf0f;");
+            }
+            else {
+                ppgText = new Text(String.format("%.2f", team.getScoreRoundThree()));
+                ppgText.setStyle("-fx-fill: #ffdf0f;");
+            }
+        }
+        else if(slot < 20) {
+            if (team.scoreRoundFour > 0) {
+                ppgText = new Text(String.format("%.2f", team.getScoreRoundThree()));
+                ppgText.setStyle("-fx-fill: #ffdf0f;");
+            }
+            else if (team.getSeed() == 1 || team.getSeed() == 6){
+                ppgText = new Text(" +" + String.format("%.1f", team.getPointsPerGame()/10));
+                ppgText.setStyle("-fx-fill: #333333; -fx-stroke: #ffdf0f; -fx-stroke-width: 2");
+            }
+            else {
+                ppgText = new Text("");
+                ppgText.setStyle("-fx-fill: #ffdf0f;");
+            }
+        }
+        ppgText.setFont(Font.font("Arial Black", 50));
+
+
+        TextFlow textFlow;
+        Label seedLabel;
+
+        boolean left_side = team.getSeed()-1 != 1 && team.getSeed()-1 != 6 && team.getSeed()-1 != 2 && team.getSeed()-1 != 5 && team.getSeed()-1 != 14 && team.getSeed()-1 != 17 && team.getSeed()-1 != 9 && team.getSeed()-1 != 22 && team.getSeed()-1 != 13 && team.getSeed()-1 != 18 && team.getSeed()-1 != 10 && team.getSeed()-1 != 21;
+        if(left_side) {
+            textFlow = new TextFlow(teamNameText, ppgText);
+            if(team.getSeed()-1 != 15 && team.getSeed()-1 != 16 && team.getSeed()-1 != 23 && team.getSeed()-1 != 12 && team.getSeed()-1 != 19 && team.getSeed()-1 != 11 && team.getSeed()-1 != 20)
+                seedLabel = new Label((team.getSeed()-1 + 1) + " ");
+            else
+                seedLabel = new Label((team.getSeed()-1 + 1) + "");
+        } else {
+            if(team.getSeed()-1 != 14 && team.getSeed()-1 != 17 && team.getSeed()-1 != 9 && team.getSeed()-1 != 22 && team.getSeed()-1 != 13 && team.getSeed()-1 != 18 && team.getSeed()-1 != 10 && team.getSeed()-1 != 21)
+                seedLabel = new Label(" " + (team.getSeed()));
+            else
+                seedLabel = new Label("" + (team.getSeed()));
+            textFlow = new TextFlow(ppgText, teamNameText);
+        }
+        textFlow.setTranslateY(30);
+        textFlow.setTextAlignment(TextAlignment.RIGHT);
+        seedLabel.setTextFill(Color.WHITE);
+        seedLabel.setFont(Font.font("Arial Black", 35));
+        seedLabel.setTextFill(Color.web("#B0B1B3"));
+
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(13);
+
+        ColumnConstraints columnConstraints = new ColumnConstraints();
+        columnConstraints.setPrefWidth(1000);
+
+        if(left_side) {
+            gridPane.add(seedLabel, 0, 0);
+            gridPane.add(leagueImageView, 1, 0);
+            gridPane.add(divisionImageView, 2, 0);
+            gridPane.add(avatarImageView, 3, 0);
+            GridPane.setHgrow(textFlow, Priority.ALWAYS);
+            gridPane.add(textFlow, 4, 0);
+        } else {
+            gridPane.getColumnConstraints().add(columnConstraints);
+            GridPane.setHgrow(textFlow, Priority.ALWAYS);
+            gridPane.add(textFlow, 0, 0);
+            gridPane.add(avatarImageView, 1, 0);
+            gridPane.add(divisionImageView, 2, 0);
+            gridPane.add(leagueImageView, 3, 0);
+            gridPane.add(seedLabel, 4, 0);
+        }
+
+        gridPane.setAlignment(Pos.CENTER);
+
+        Label label = new Label();
+        label.setGraphic(gridPane);
+
+        final int WILDCARD_X = 1088;
+        final double BYE_X = 2618;
+        final float WILDCARD_X_FLIP = 14510.5F - 1490.25F;
+        final float BYE_X_FLIP = 12980 - 1490.25F;
+
+        if(slot == 0) {
+            label.setLayoutX(BYE_X);
+            label.setLayoutY(1576);
+        }
+        if(slot == 1) {
+            label.setLayoutX(BYE_X+11);
+            label.setLayoutY(2467.5);
+        }
+        if(slot == 2) {
+            label.setLayoutX(BYE_X);
+            label.setLayoutY(3360);
+        }
+        if(slot == 3) {
+            label.setLayoutX(BYE_X);
+            label.setLayoutY(4252);
+        }
+        if(slot == 4) {
+            label.setLayoutX(BYE_X_FLIP);
+            label.setLayoutY(1576);
+        }
+        if(slot == 5) {
+            label.setLayoutX(BYE_X_FLIP);
+            label.setLayoutY(2468);
+        }
+        if(slot == 6) {
+            label.setLayoutX(BYE_X_FLIP);
+            label.setLayoutY(3360);
+        }
+        if(slot == 7) {
+            label.setLayoutX(BYE_X_FLIP);
+            label.setLayoutY(4252);
+        }
+        if(slot == 8) {
+            label.setLayoutX(4160);
+            label.setLayoutY(1873.5);
+        }
+        if(slot == 9) {
+            label.setLayoutX(4160);
+            label.setLayoutY(2022);
+        }
+        if(slot == 10) {
+            label.setLayoutX(4159.75);
+            label.setLayoutY(3656.16);
+        }
+        if(slot == 11) {
+            label.setLayoutX(4159.75);
+            label.setLayoutY(3805);
+        }
+        if(slot == 12) {
+            label.setLayoutX(WILDCARD_X_FLIP - 3060.85);
+            label.setLayoutY(1873.25);
+        }
+        if(slot == 13) {
+            label.setLayoutX(WILDCARD_X_FLIP - 3060.85);
+            label.setLayoutY(2022);
+        }
+        if(slot == 14) {
+            label.setLayoutX(WILDCARD_X_FLIP - 3060.85);
+            label.setLayoutY(3656.16);
+        }
+        if(slot == 15) {
+            label.setLayoutX(WILDCARD_X_FLIP - 3060.85);
+            label.setLayoutY(3805);
+        }
+        if(slot == 16) {
+            label.setLayoutX(5691);
+            label.setLayoutY(2764.33);
+        }
+        if(slot == 17) {
+            label.setLayoutX(5691);
+            label.setLayoutY(2913);
+        }
+        if(slot == 18) {
+            label.setLayoutX(8428.5);
+            label.setLayoutY(2764.33);
+        }
+        if(slot == 19) {
+            label.setLayoutX(8428.5);
+            label.setLayoutY(2913);
+        }
+
+        group.getChildren().add(label);
     }
 
 }

@@ -1,11 +1,59 @@
 package program;
 
 public class Team {
+    public int getScoreRoundFour() {
+        return scoreRoundFour;
+    }
+
+    public void setScoreRoundFour(int scoreRoundFour) {
+        this.scoreRoundFour = scoreRoundFour;
+    }
+
+    public int scoreRoundFour;
+
+    public double getScoreRoundThree() {
+        return scoreRoundThree;
+    }
+
+    public void setScoreRoundThree(double scoreRoundThree) {
+        this.scoreRoundThree = scoreRoundThree;
+    }
+
+    public double scoreRoundThree;
     String username;
     String teamName;
     int wins;
     int losses;
     double pointsPerGame;
+    double scoreRoundOne;
+
+    public int getSeed() {
+        return seed;
+    }
+
+    public void setSeed(int seed) {
+        this.seed = seed;
+    }
+
+    int seed;
+
+    public double getScoreRoundTwo() {
+        return scoreRoundTwo;
+    }
+
+    public void setScoreRoundTwo(double scoreRoundTwo) {
+        this.scoreRoundTwo = scoreRoundTwo;
+    }
+
+    double scoreRoundTwo;
+
+    public double getScoreRoundOne() {
+        return scoreRoundOne;
+    }
+
+    public void setScoreRoundOne(double scoreRoundOne) {
+        this.scoreRoundOne = scoreRoundOne;
+    }
 
     public String getConference() {
         return conference;
